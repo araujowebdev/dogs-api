@@ -18,6 +18,8 @@
   
   require_once $dirbase . '/endpoints/comment_post.php';
   require_once $dirbase . '/endpoints/comment_get.php';
+  
+  require_once $dirbase . '/endpoints/stats_get.php';
 
   require_once $dirbase . '/endpoints/password.php';
 
