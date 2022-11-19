@@ -61,6 +61,9 @@ define( 'DB_COLLATE', '' );
  */
 $table_prefix = 'wp_';
 
+define('JWT_AUTH_SECRET_KEY', 'B,MBoxI{ebT`RYZcN_*u|r[gj=zL+61=&_}u.`fXWFT,@Z/(7-JcZq@+>bykPnY&');
+define('JWT_AUTH_CORS_ENABLE', true);
+
 /**
  * For developers: WordPress debugging mode.
  *
