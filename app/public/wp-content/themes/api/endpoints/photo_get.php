@@ -23,7 +23,7 @@
     $post = get_post($post_id);
 
     if(!isset($post) || empty($post_id)) {
-      $response = new WP_Error('error', 'Post não encontradp.', ['status' => 404]);
+      $response = new WP_Error('error', 'Post não encontrado.', ['status' => 404]);
       return rest_ensure_response($response);
     }
 
@@ -41,10 +41,6 @@
       'comments' => $comments,
     ];
 
-    // $comments = get_comments([
-    //   'post_id' => $post_id,
-    // ]);
-
     return rest_ensure_response($photo);
   }
 
@@ -55,4 +51,46 @@
     ]);
   }
   add_action('rest_api_init', 'register_api_photo_get');
+
+  function api_photos_get($request) {
+    $_total = sanitize_text_field($request['_total']) ?: 6;
+    $_page = sanitize_text_field($request['_page']) ?: 1;
+    $_user = sanitize_text_field($request['_user']) ?: 0;
+
+    if(!is_numeric($_user)) {
+      $user = get_user_by('login', $_user);
+      if(!$user) {
+        $response = new WP_Error('error', 'Usuário não encontrado.', ['status' => 404]);
+        return rest_ensure_response($response);
+      }
+      $_user = $user->ID;
+    }
+
+    $args = [
+      'post_type' => 'post',
+      'author' => $_user,
+      'posts_per_page' => $_total,
+      'paged' => $_page,
+    ];
+
+    $query = new WP_Query($args);
+    $posts = $query->posts;
+
+    $photos = [];
+    if($posts) {
+      foreach($posts as $post) {
+        $photos[] = photo_data($post);
+      }
+    }
+
+    return rest_ensure_response($photos);
+  }
+
+  function register_api_photos_get() {
+    register_rest_route('api', '/photo', [
+      'methods' => WP_REST_Server::READABLE,
+      'callback' => 'api_photos_get',
+    ]);
+  }
+  add_action('rest_api_init', 'register_api_photos_get');
 ?>
