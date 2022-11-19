@@ -32,3 +32,5 @@
   }
   add_action('rest_api_init', 'register_api_user_post');
 ?>
+
+<!-- eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZG9nc2FwaS5sb2NhbCIsImlhdCI6MTY2ODgxNzYwNCwibmJmIjoxNjY4ODE3NjA0LCJleHAiOjE2Njg5MDQwMDQsImRhdGEiOnsidXNlciI6eyJpZCI6IjIifX19.Rt1pEsWDDruID1F2O7UQpSwCONIc9O_6PDiWovWPHYk -->
