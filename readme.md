@@ -1,6 +1,6 @@
 # Dogs-API
 
-Este é um projeto de API REST feito com WordPress e JWT para autenticação.
+Este é um projeto de API REST feito com WordPress e JWT para autenticação. Esta API é utilizada do projeto de uma "rede social" para cachorros e pode ser acessada em [**https://dogs.origamid.dev/**](https://dogs.origamid.dev/).
 
 | Sobre       |                 |
 | ----------- | --------------- |
